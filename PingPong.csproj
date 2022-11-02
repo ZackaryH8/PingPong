@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <None Update="Assets\**">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<TargetPath>%(RecursiveDir)\%(Filename)%(Extension)</TargetPath>
+	  </None>
+	</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiteNetLib" Version="1.0.0-rc.3" />
+    <PackageReference Include="Raylib-CsLo" Version="4.2.0.3" />
+    <PackageReference Include="SimpleInjector" Version="5.4.1" />
+  </ItemGroup>
+
+</Project>
