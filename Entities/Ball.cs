@@ -66,7 +66,7 @@ namespace PingPong.Entities
 
         public void Draw()
         {
-            Raylib.DrawCircle((int) Position.X, (int) Position.Y, Radius, Color);
+            Raylib.DrawCircle((int)Position.X, (int)Position.Y, Radius, Color);
         }
 
         public void Update()
@@ -111,7 +111,7 @@ namespace PingPong.Entities
                     AudioManager.Instance.PlayPaddleHitSound();
                     InvertYVelocity();
                 }
- 
+
             }
 
             Position = Position + Velocity;

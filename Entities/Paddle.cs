@@ -21,21 +21,23 @@ namespace PingPong.Entities
             IsNetwork = isNetwork;
         }
 
-        
+
         public void CheckControls()
         {
-                // Create a new position vector
+            // Create a new position vector
             Vector2 newPosition = Position;
+
             // Check if paddle is network
-            if (IsNetwork) {
-                            if (Raylib.IsKeyDown(KeyboardKey.KEY_UP))
+            if (IsNetwork)
             {
-                newPosition.Y -= Speed;
-            }
-            else if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN))
-            {
-                newPosition.Y += Speed;
-            }
+                if (Raylib.IsKeyDown(KeyboardKey.KEY_UP))
+                {
+                    newPosition.Y -= Speed;
+                }
+                else if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN))
+                {
+                    newPosition.Y += Speed;
+                }
             };
 
 
@@ -49,7 +51,7 @@ namespace PingPong.Entities
             {
                 newPosition.Y += Speed;
             }
-            
+
             // Check if new position is valid (not outside of screen)
             if (newPosition.Y >= 0 && newPosition.Y <= Raylib.GetScreenHeight() - Size.Y)
             {

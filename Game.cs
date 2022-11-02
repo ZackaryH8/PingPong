@@ -11,7 +11,7 @@ namespace PingPong
         public static int WindowWidth = 800;
         public static int WindowHeight = 600;
         public static bool GameRunning = true;
-        
+
         static void Main(string[] args)
         {
             Console.WriteLine(WindowHeight);
@@ -51,7 +51,7 @@ namespace PingPong
 
                 // Update input manager
                 // InputManager.Instance.Update();
-                
+
                 Raylib.EndDrawing();
             }
 
