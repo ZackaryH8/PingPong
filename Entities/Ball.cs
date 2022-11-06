@@ -7,11 +7,11 @@ namespace PingPong.Entities
     public class Ball
     {
         public Vector2 Position;
-        public int Radius;
+        public float Radius;
         public Vector2 Velocity = new Vector2(-3, 0);
         public Color Color;
 
-        public Ball(Vector2 position, int radius, Color color)
+        public Ball(Vector2 position, float radius, Color color)
         {
             Position = position;
             Radius = radius;
