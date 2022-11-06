@@ -1,4 +1,4 @@
-﻿using System.Numerics;
+using System.Numerics;
 using PingPong.Entities;
 using PingPong.Systems;
 using PingPong.Utilities;
@@ -22,6 +22,9 @@ namespace PingPong
             Raylib.InitWindow(WindowWidth, WindowHeight, "Pong!");
             Raylib.SetTargetFPS(60);
             Raylib.InitAudioDevice();
+
+            // Initialize shaders
+            ShaderManager.Instance.Initialize();
 
             // Initialize Entities
             var paddleLeft = EntityManager<Paddle>.Instance.Add(new Paddle(new Vector2(10, Screen.CenterY - 100 / 2), new Vector2(10, 100), Raylib.RED));
