@@ -4,7 +4,7 @@ namespace PingPong.Systems
 {
     public class EntityManager<T> where T : class
     {
-        private static EntityManager<T> _instance;
+        private static EntityManager<T>? _instance;
         public static EntityManager<T> Instance => _instance ??= new EntityManager<T>();
 
         private readonly List<T> _entities = new List<T>();

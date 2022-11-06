@@ -4,7 +4,7 @@ namespace PingPong.Systems
 {
     public class ShaderManager
     {
-        private static ShaderManager _instance;
+        private static ShaderManager? _instance;
         public static ShaderManager Instance => _instance ??= new ShaderManager();
 
         private readonly Dictionary<string, Shader> _shaders = new Dictionary<string, Shader>();

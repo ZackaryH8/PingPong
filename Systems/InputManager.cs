@@ -6,11 +6,11 @@ namespace PingPong.Systems
 {
     public class InputManager
     {
-        private static InputManager _instance;
+        private static InputManager? _instance;
         public static InputManager Instance => _instance ??= new InputManager();
         
 
-        // update method
+        
         public void Update()
         {
             // // Get paddle from entity manager

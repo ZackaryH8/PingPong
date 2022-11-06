@@ -4,7 +4,7 @@ namespace PingPong.Systems
 {
     public class AudioManager
     {
-        private static AudioManager _instance;
+        private static AudioManager? _instance;
         public static AudioManager Instance => _instance ??= new AudioManager();
 
         private static Sound _paddleHitSound = Raylib.LoadSound("Assets/Audio/paddle_hit.ogg");
