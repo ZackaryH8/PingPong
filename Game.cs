@@ -1,4 +1,4 @@
-using System.Numerics;
+﻿using System.Numerics;
 using PingPong.Entities;
 using PingPong.Systems;
 using PingPong.Utilities;
@@ -28,7 +28,7 @@ namespace PingPong
 
             // Initialize Entities
             var paddleLeft = EntityManager<Paddle>.Instance.Add(new Paddle(new Vector2(10, Screen.CenterY - 100 / 2), new Vector2(10, 100), Raylib.RED));
-            var ball = EntityManager<Ball>.Instance.Add(new Ball(Screen.Center, 10, Raylib.BLUE));
+            var ball = EntityManager<Ball>.Instance.Add(new Ball(Screen.Center, 15f, Raylib.BLUE));
             var paddleRight = EntityManager<Paddle>.Instance.Add(new Paddle(new Vector2(Screen.OffsetX(20), 10), new Vector2(10, 100), Raylib.BLUE, true));
 
             // Initialize Game
@@ -43,18 +43,17 @@ namespace PingPong
                 Raylib.BeginDrawing();
                 Raylib.ClearBackground(Raylib.BLACK);
 
+                // Draw all entities
+                EntityManager<Paddle>.Instance.Draw();
 
                 // Update all entities
                 EntityManager<Paddle>.Instance.Update();
                 EntityManager<Ball>.Instance.Update();
 
-                // Draw all entities
-                EntityManager<Paddle>.Instance.Draw();
-                EntityManager<Ball>.Instance.Draw();
 
                 // Update input manager
                 // InputManager.Instance.Update();
-
+                
                 Raylib.EndDrawing();
             }
 
