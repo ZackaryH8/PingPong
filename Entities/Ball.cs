@@ -1,5 +1,6 @@
 using System.Numerics;
 using PingPong.Systems;
+using PingPong.Utilities;
 using Raylib_CsLo;
 
 namespace PingPong.Entities
@@ -66,11 +67,44 @@ namespace PingPong.Entities
 
         public void Draw()
         {
+            // Start shader mode
+            Raylib.BeginShaderMode(ShaderManager.Instance.GetShader("radialGradient"));
+
+            // Draw the circle
             Raylib.DrawCircle((int)Position.X, (int)Position.Y, Radius, Color);
+
+            // Draw the shader
+            DrawShader();
+
+            // End shader mode
+            Raylib.EndShaderMode();
+        }
+
+        private void DrawShader()
+        {
+            // Get shader
+            Shader shader = ShaderManager.Instance.GetShader("radialGradient");
+
+            // Set shader values
+            int centerLoc = Raylib.GetShaderLocation(shader, "center");
+            int colorLoc = Raylib.GetShaderLocation(shader, "color");
+            int expandLoc = Raylib.GetShaderLocation(shader, "expand");
+            int radiusLoc = Raylib.GetShaderLocation(shader, "radius");
+            int windowHeightLoc = Raylib.GetShaderLocation(shader, "windowHeight");
+
+            Shaders.SetValuePosition(shader, centerLoc, Position);
+            Shaders.SetValueColor(shader, colorLoc, Color);
+            Raylib.SetShaderValue(shader, expandLoc, 0.5f, ShaderUniformDataType.SHADER_UNIFORM_FLOAT);
+            Raylib.SetShaderValue(shader, radiusLoc, 20f, ShaderUniformDataType.SHADER_UNIFORM_FLOAT);
+            Raylib.SetShaderValue(shader, windowHeightLoc, (float)Raylib.GetScreenHeight(), ShaderUniformDataType.SHADER_UNIFORM_FLOAT);
         }
 
         public void Update()
         {
+            // Draw the ball
+            Draw();
+
+            // Loop each paddle and check if the ball has collided with it
             foreach (var paddle in EntityManager<Paddle>.Instance.GetAll())
             {
                 // Check if ball collides with paddle
